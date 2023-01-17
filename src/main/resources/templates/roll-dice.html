@@ -7,6 +7,8 @@
 <body>
 <h1>Guess a number between 1 and 6</h1>
 <h1 th:text="${guess}"></h1>
+<h1 th:text="${rolls}"></h1>
+<h1 th:text="${matches}"></h1>
 <form action="/roll-dice" method="post">
     <input type="text" name="guess" id="guess-ip" class="field" />
     <button>Guess</button>
