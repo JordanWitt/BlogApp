@@ -13,8 +13,8 @@ public class PostController {
 
         @RequestMapping(path ="/post/{id}", method = RequestMethod.GET)
         @ResponseBody
-        public String viewPostId(@PathVariable String id){
-            return "This is a post with an " + id;
+        public String viewPostId(@PathVariable int id){
+            return "This is a post with " + id + " as the id";
         }
         @RequestMapping(path ="/posts/create", method = RequestMethod.GET)
         @ResponseBody
