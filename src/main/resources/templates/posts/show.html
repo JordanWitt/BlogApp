@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Join</title>
+</head>
+<body>
+<nav th:insert="~{partials/navbar :: navbar}"></nav>
+<div th:each="post: ${posts}">
+    <h1 th:text="${post.title}"></h1>
+    <p th:text="${post.body}"></p>
+</div>
+
+
+<form action="/join" method="post">
+    <input type="text" name="cohort" id="cohort-ip" class="field" />
+    <button>Join now</button>
+</form>
+<div th:insert="~{partials/footer :: footer}"></div>
+</body>
+</html>

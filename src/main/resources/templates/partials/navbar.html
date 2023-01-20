@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Navbar</title>
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/ads">BlogApp</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <form method="POST" action="/ads/search">
+                <input  type="search" id="navbar" name="adBar" placeholder="Search for Ads">
+            </form>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/create">Create</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/register">Register</a></li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<hr>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.codeup.blogapp;
+package com.codeup.blogapp.controllers;
 
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,11 @@ public class HomeController {
         model.addAttribute("name", name);
         return "hello";
     }
+    @GetMapping("/home")
+    public String welcome() {
+        return "home";
+    }
+
     @GetMapping("/join")
     public String showJoinForm() {
         return "join";

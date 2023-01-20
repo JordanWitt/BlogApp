@@ -1,14 +1,13 @@
-package com.codeup.blogapp;
-
+package com.codeup.blogapp.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 @Controller
 public class DiceRollController {
     private final Random random = new Random();
