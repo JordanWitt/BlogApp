@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import java.util.List;
 
 @Controller
@@ -32,9 +33,9 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String getIndividualPost(@PathVariable long id, Model model){
-        Post currentPost = postDoa.getReferenceById(1L);
+        Post currentPost = postDoa.getReferenceById(id);
         model.addAttribute("post", currentPost);
-        return "posts/index";
+        return "posts/post";
     }
     @GetMapping ("/posts/create")
     public String createAdPage(){
