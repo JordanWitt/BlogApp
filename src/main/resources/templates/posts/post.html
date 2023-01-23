@@ -8,14 +8,10 @@
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div th:object="${post}">
   <h1 th:text="${post.title}"></h1>
+  <h3 th:text="${post.user.email}"></h3>
+  <h3 th:text="${post.user.username}"></h3>
   <p th:text="${post.body}"></p>
 </div>
-
-
-<form action="/join" method="post">
-  <input type="text" name="cohort" id="cohort-ip" class="field" />
-  <button>Join now</button>
-</form>
 
 </body>
 </html>

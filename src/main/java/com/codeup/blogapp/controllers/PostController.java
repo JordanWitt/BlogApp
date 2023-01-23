@@ -5,11 +5,7 @@ import com.codeup.blogapp.repositories.PostRepository;
 import com.codeup.blogapp.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,17 +38,12 @@ public class PostController {
         return "posts/create";
     }
 
-    @PostMapping("/posts/create")
-    public String createAd(@RequestParam(name = "username") String username, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
-        Post post = new Post();
-        User user = userDoa.findByUsername(username);
-        post.setTitle(title);
-        post.setBody(body);
+    @PostMapping(path = "/posts/create")
+    public String create(@ModelAttribute Post post) {
+        User user = userDoa.getReferenceById(1L);
         post.setUser(user);
         postDoa.save(post);
         return "redirect:/posts";
     }
-
-
 }
 
