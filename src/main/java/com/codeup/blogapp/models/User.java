@@ -1,36 +1,34 @@
-
 package com.codeup.blogapp.models;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User{
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String password;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(long id, String username, String email, String password){
+    public User(long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
     }
-    public User(String username, String email, String password){
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
+
     public long getId() {
         return id;
     }
@@ -55,7 +53,11 @@ public class User{
         this.email = email;
     }
 
-    public String getPassword(){return password;}
+    public String getPassword() {
+        return password;
+    }
 
-    public void setPassword(String password) {this.password = password;}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

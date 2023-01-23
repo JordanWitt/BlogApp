@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Join</title>
@@ -8,6 +8,7 @@
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div th:object="${post}">
   <h1 th:text="${post.title}"></h1>
+  <p th:text="${post.user.email}"></p>
   <p th:text="${post.body}"></p>
 </div>
 

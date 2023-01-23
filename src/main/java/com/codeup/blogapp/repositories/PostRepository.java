@@ -8,4 +8,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
  Post findByTitle(String title);
 
  Post findByBody(String body);
+
+ Post findById(long id);
 }

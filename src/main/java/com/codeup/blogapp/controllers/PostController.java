@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
 
 @Controller
@@ -33,8 +36,22 @@ public class PostController {
         model.addAttribute("post", currentPost);
         return "posts/index";
     }
-    @GetMapping("/create")
-    public String createPost() {
+    @GetMapping ("/posts/create")
+    public String createAdPage(){
         return "posts/create";
     }
+
+    @PostMapping("/posts/create")
+    public String createAd(@RequestParam(name = "username") String username, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
+        Post post = new Post();
+        User user = userDoa.findByUsername(username);
+        post.setTitle(title);
+        post.setBody(body);
+        post.setUser(user);
+        postDoa.save(post);
+        return "redirect:/posts";
+    }
+
+
 }
+

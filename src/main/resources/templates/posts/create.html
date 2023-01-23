@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create Post</title>
 </head>
 <body>
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <h1>CREATE BLOG POST</h1>
-    <form>
+    <form action="/posts/create" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title"><br><br>
-
         <label for="body">Body:</label>
         <textarea  id="body" name="body"></textarea><br><br>
         <input type="submit" value="Submit">
