@@ -9,7 +9,7 @@ public class TestController {
     @GetMapping("/test")
     @ResponseBody
     public String hello(){
-        return "Hello, this is me testing";
+        return "test";
     }
 
     @GetMapping("/test{name}")

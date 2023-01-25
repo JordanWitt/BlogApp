@@ -25,8 +25,8 @@ public class HomeController {
         return "join";
     }
     @PostMapping("/join")
-    public String joinCohort(@RequestParam(name = "cohort") String cohort, Model model) {
-        model.addAttribute("cohort", "Welcome to " + cohort + "!");
+    public String joinCohort(@RequestParam(name = "name") String name, Model model) {
+        model.addAttribute("name", "Welcome " + name + "!");
         return "join";
     }
 

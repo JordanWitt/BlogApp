@@ -1,4 +1,6 @@
+
 package com.codeup.blogapp.models;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +18,14 @@ public class Post {
 
     @OneToOne
     private User user;
+
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name="ads_categories",
+//            joinColumns={@JoinColumn(name="post_id")},
+//            inverseJoinColumns={@JoinColumn(name="category_id")}
+//    )
+//    private List<AdCategory> categories;
 
     public Post(long id, String title, String body) {
         this.id = id;
