@@ -3,6 +3,7 @@ import com.codeup.blogapp.models.Post;
 import com.codeup.blogapp.models.User;
 import com.codeup.blogapp.repositories.PostRepository;
 import com.codeup.blogapp.repositories.UserRepository;
+import com.codeup.blogapp.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,20 @@ public class PostController {
 
     private final UserRepository userDoa;
 
-    public PostController(PostRepository postDoa, UserRepository userDoa){
-        this.postDoa = postDoa; this.userDoa = userDoa;
+//    private final EmailService emailService;
+
+    private PostService postService;
+
+    public PostController(PostRepository postDoa, UserRepository userDoa, PostService postService){
+        this.postDoa = postDoa;
+        this.userDoa = userDoa;
+//        this.emailService = emailService;
+        this.postService = postService;
     }
 
     @GetMapping("/posts")
     public String getPosts(Model model){
-        List<Post> posts = postDoa.findAll();
+        List<Post> posts = postService.getPosts();
         model.addAttribute("posts", posts);
         return "posts/show";
     }
