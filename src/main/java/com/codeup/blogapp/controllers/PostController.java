@@ -5,7 +5,6 @@ import com.codeup.blogapp.models.User;
 import com.codeup.blogapp.repositories.PostRepository;
 import com.codeup.blogapp.repositories.UserRepository;
 import com.codeup.blogapp.service.EmailService;
-import com.codeup.blogapp.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +26,9 @@ public class PostController {
     @GetMapping("/posts")
     public String getPosts(Model model) {
         List<Post> posts = postDoa.findAll();
+        for(Post post : posts){
+            System.out.println(post.getUser().getEmail());
+        }
         model.addAttribute("posts", posts);
         return "posts/show";
     }
@@ -43,15 +45,18 @@ public class PostController {
         model.addAttribute("post", new Post());
         return "posts/create";
     }
-    @GetMapping("/posts/edit")
-    public String showEditForm(Model model) {
+    @GetMapping("/posts/{id}/edit")
+    public String showEditForm(@PathVariable long id, Model model) {
         model.addAttribute("post", new Post());
         return "posts/edit";
     }
 
     @PostMapping("/posts/create")
     public String create(@ModelAttribute Post post) {
-        User user = userDoa.getReferenceById(3L);
+        User user = userDoa.getReferenceById(1L);
+        String title = post.getTitle();
+        String body = post.getBody();
+        String email = user.getEmail();
         post.setUser(user);
         postDoa.save(post);
         System.out.println(user);
