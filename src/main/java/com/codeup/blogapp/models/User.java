@@ -30,6 +30,10 @@ public class User {
     public User() {
 
     }
+
+    public User(User user) {
+    }
+
     public long getId() {
         return id;
     }

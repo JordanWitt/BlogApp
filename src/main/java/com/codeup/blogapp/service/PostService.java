@@ -16,18 +16,28 @@ public class PostService {
 
     private final UserRepository userDoa;
 
+    private final EmailService emailService;
 
-    public PostService(PostRepository postDoa, UserRepository userDoa){
+
+    public PostService(PostRepository postDoa, UserRepository userDoa, EmailService emailService){
         this.postDoa = postDoa;
         this.userDoa = userDoa;
+        this.emailService = emailService;
 
     }
-    public List <Post> getPosts(){
+    public List <Post> getAllPosts(){
+        for(Post post: postDoa.findAll()){
+            System.out.println("Username: " + post.getUser().getUsername());
+            System.out.println("Title: " + post.getTitle());
+            System.out.println("Body: " + post.getBody());
+            }
         return postDoa.findAll();
     }
     public void create(Post post){
         User user = userDoa.getReferenceById(1L);
         post.setUser(user);
+        emailService.preparedAndSend(post, post.getTitle(), post.getBody());
+        postDoa.save(post);
 
     }
 }
