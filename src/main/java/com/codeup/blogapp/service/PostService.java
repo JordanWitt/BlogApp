@@ -1,11 +1,10 @@
 package com.codeup.blogapp.service;
-
 import com.codeup.blogapp.models.Post;
 import com.codeup.blogapp.models.User;
 import com.codeup.blogapp.repositories.PostRepository;
 import com.codeup.blogapp.repositories.UserRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 import java.util.List;
 
@@ -32,6 +31,9 @@ public class PostService {
             System.out.println("Body: " + post.getBody());
             }
         return postDoa.findAll();
+    }
+    public Post getPost(long id){
+        return postDoa.getReferenceById(id);
     }
     public void create(Post post){
         User user = userDoa.getReferenceById(1L);
