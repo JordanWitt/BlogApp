@@ -14,7 +14,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-    private final UserDetailsLoader usersLoader;
+
+    private UserDetailsLoader usersLoader;
 
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
         this.usersLoader = usersLoader;
@@ -45,16 +46,17 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .requestMatchers("/", "/posts", "/signup") // anyone can see the home and the ads pages
+                .requestMatchers("/", "/posts", "/sign-up", "/posts/{id}") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
                 .requestMatchers(
-                        "/posts/create" // only authenticated users can create ads
+                        "/ads/create" // only authenticated users can create ads
                 )
                 .authenticated()
         ;
         return http.build();
     }
+
 }

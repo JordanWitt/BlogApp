@@ -13,8 +13,8 @@
     <h1 class="p-2">HERE ARE YOUR POSTS</h1>
     <hr>
     <div th:each="post: ${posts}">
+        <p th:text="${post.user.username}"></p>
         <h3 th:text="${post.title}"></h3>
-        <p th:text="${post.user.email}"></p>
         <p th:text="${post.body}"></p>
         <hr>
     </div>
